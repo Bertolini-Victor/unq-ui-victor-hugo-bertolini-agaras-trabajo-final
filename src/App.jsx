@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import './App.css'
-import {getDifficulties, getQuestions, postAnswer} from './services/api.js'
+import Home from './pages/home/home.jsx'
 
 function App() {
-  
   return (
-    <div>
-      
-    </div>
+    <Home />
   )
 }
 
-export default App
+export default App;
