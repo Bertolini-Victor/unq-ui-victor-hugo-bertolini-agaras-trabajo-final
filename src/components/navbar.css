@@ -1,0 +1,82 @@
+/* Reset of the styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  General style of the navbar */
+.navBar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    border-right: 1px solid #989191;
+    padding-top: 2rem;
+}
+
+/* Styles for the logos */
+.logos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.logoName{
+    width: 250px;
+}
+
+/* General Style for the navigation lists */
+ul {
+    list-style: none; 
+}
+
+.ulNav{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.ulNav button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.ulNav button:hover{
+    text-decoration: underline;
+    color: #035c79;
+}
+
+/* Styles for the leaderboard */
+.scoreBoard{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    max-width: 310px;
+}
+
+h3{
+    font-size: 40px;
+}
+
+.scoreList {
+    text-align: justify;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
