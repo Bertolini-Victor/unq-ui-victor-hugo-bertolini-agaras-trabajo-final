@@ -1,15 +1,28 @@
 import './navbar.css'
 import Storage from '../services/storage.js'
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
     const navigate = useNavigate();
 
     const [easyScore, setEasyScore] = useState(() => {try { return Storage.getHighestScore('easy') || 0;} catch {return 0;}});
-    const [mediumScore, setMediumScore] = useState(() => {try {return Storage.getHighestScore('medium') || 0;} catch {return 0;}});
+    const [normalScore, setNormalScore] = useState(() => {try {return Storage.getHighestScore('normal') || 0;} catch {return 0;}});
     const [hardScore, setHardScore] = useState(() => {try {return Storage.getHighestScore('hard') || 0;} catch {return 0;}});
-    const [extremeScore, setExtremeScore] = useState(() => {try {return Storage.getHighestScore('extreme') || 0;} catch {return 0;}});
+    const [expertScore, setExpertScore] = useState(() => {try {return Storage.getHighestScore('expert') || 0;} catch {return 0;}});
+
+    useEffect(() => {
+        const updateScores = () => {
+            setEasyScore(Storage.getHighestScore('easy') || 0);
+            setNormalScore(Storage.getHighestScore('normal') || 0);
+            setHardScore(Storage.getHighestScore('hard') || 0);
+            setExpertScore(Storage.getHighestScore('expert') || 0);
+        };
+        window.addEventListener('scoreUpdated', updateScores);
+        return () => {
+            window.removeEventListener('scoreUpdated', updateScores);
+        };
+    }, []); 
 
     const handlerHome = () => {
         navigate('/');
@@ -33,9 +46,9 @@ const Navbar = () => {
                 <h3>Best Scores</h3>
                 <ul className='scoreList'>
                     <li>Easy difficulty: {easyScore}</li>
-                    <li>Normal difficulty: {mediumScore}</li>
+                    <li>Normal difficulty: {normalScore}</li>
                     <li>Hard difficulty: {hardScore}</li>
-                    <li>Expert difficulty: {extremeScore}</li>
+                    <li>Expert difficulty: {expertScore}</li>
                 </ul>
             </div>
         </nav>

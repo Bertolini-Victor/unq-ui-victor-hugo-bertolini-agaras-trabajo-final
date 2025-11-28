@@ -35,7 +35,7 @@
     background-color: rgb(4, 97, 190);
 }
 
-.buttonMedium {
+.buttonNormal{
     background-color: rgb(11, 48, 122);
 }
 
@@ -43,6 +43,6 @@
     background-color: rgba(196, 84, 9, 0.612);
 }
 
-.buttonExtreme {
+.buttonExpert {
     background-color: rgba(169, 6, 6, 0.667);
 }

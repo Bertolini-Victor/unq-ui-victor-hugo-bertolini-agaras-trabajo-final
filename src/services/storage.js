@@ -1,7 +1,8 @@
 const Storage = {
 
-    setHihgestScore: (score, difficulty) => {
-        localStorage.setItem(`highestScore_${difficulty}`, score);
+    setHighestScore: (difficulty, score) => {
+        localStorage.setItem(`highestScore_${difficulty}`, score); 
+        window.dispatchEvent(new Event("scoreUpdated"));
     },
 
     getHighestScore: (difficulty) => {
