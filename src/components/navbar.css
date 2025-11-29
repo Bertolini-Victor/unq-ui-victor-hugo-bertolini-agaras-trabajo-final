@@ -1,0 +1,222 @@
+/* Reset of the styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  General style of the navbar */
+.navBar {
+    height: 100vh;
+    width: 280px; 
+    min-width: 280px;
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid #333;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3); 
+    z-index: 10;
+    gap: 20px;
+}
+
+.nav-links-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
+
+/* Styles for the logos */
+.logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logos:hover {
+    transform: scale(1.02);
+}
+
+.logoWilly {
+    width: 80px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+}
+
+.logoName {
+    width: 180px;
+}
+
+/* General Style for the navigation lists */
+ul {
+    list-style: none; 
+}
+
+.ulNav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.ulNav button {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid transparent;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ulNav button:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+    border-color: #444;
+    transform: translateX(5px);
+    box-shadow: -3px 0 0 #646cff;
+    cursor: pointer;
+}
+
+/* Styles for the leaderboard */
+.scoreBoard {
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #333;
+    margin-top: auto;
+}
+
+.scoreBoard h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.scoreList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0;
+}
+
+.score-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    padding: 10px 5px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: transform 0.2s;
+}
+
+.score-card:hover {
+    transform: translateY(-2px);
+    border-color: #555;
+}
+
+.score-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.score-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.score-value.easy { color: #2ecc71; }
+.score-value.normal { color: #3498db; }
+.score-value.hard { color: #f39c12; }
+.score-value.extreme { color: #e74c3c; }
+
+/* Styles for the responsive layout */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 20;
+}
+
+.bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navBar {
+        width: 100%;
+        height: 70px;
+        min-width: auto;
+        flex-direction: column;
+        padding: 0 20px;
+        position: relative;
+        justify-content: center;
+        border-right: none;
+        border-bottom: 1px solid #333;
+        z-index: 1000;
+    }
+    .top-bar-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #1e1e1e;
+        position: relative;
+        z-index: 1002;
+    }
+    .logos { flex-direction: row; margin-bottom: 0; gap: 10px; }
+    .logoWilly { width: 40px; } 
+    .logoName { display: none; }
+    .hamburger { display: flex; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+    .scoreBoard { display: none !important; }
+    .nav-links-container {
+        position: absolute;
+        top: 69px;
+        left: 0;
+        width: 100%;
+        background-color: #1e1e1e;
+        border-bottom: 1px solid #333;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        flex-direction: column;
+        z-index: 1001;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+    .navBar.open .nav-links-container { max-height: 300px; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .top-bar-mobile, .hamburger, .logos { user-select: none;  -webkit-user-select: none; }
+}
