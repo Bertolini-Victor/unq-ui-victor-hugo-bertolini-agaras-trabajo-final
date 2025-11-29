@@ -14,15 +14,35 @@ const Home = () => {
         <div className='homePage'>
             <Navbar />
             <main className='mainBody'>
-                <div className='titles'>
-                    <h1>Welcome to Trivia Crack</h1>
-                    <h2>Try your knowledge with our different difficulty levels</h2>
+                <div className='hero-section'>
+                    <h1 className='main-title'>Trivia <span className='highlight'>Crack</span></h1>
+                    <p className='subtitle'>Select your challenge level and prove your knowledge.</p>
                 </div>
-                <div className='buttonsGame'>
-                    <button className='buttonEasy' onClick={() => handlerGame('easy')}>Easy</button>
-                    <button className='buttonNormal' onClick={() => handlerGame('normal')}>Normal</button>
-                    <button className='buttonHard' onClick={() => handlerGame('hard')}>Hard</button>
-                    <button className='buttonExpert' onClick={() => handlerGame('expert')}>Expert</button>
+                <div className='difficulty-grid'>
+                    <button className='difficulty-card easy' onClick={() => handlerGame('easy')}>
+                        <div className='card-content'>
+                            <h3>Easy</h3>
+                            <span>For beginners</span>
+                        </div>
+                    </button>
+                    <button className='difficulty-card normal' onClick={() => handlerGame('normal')}>
+                        <div className='card-content'>
+                            <h3>Normal</h3>
+                            <span>Standard challenge</span>
+                        </div>
+                    </button>
+                    <button className='difficulty-card hard' onClick={() => handlerGame('hard')}>
+                        <div className='card-content'>
+                            <h3>Hard</h3>
+                            <span>For veterans</span>
+                        </div>
+                    </button>
+                    <button className='difficulty-card extreme' onClick={() => handlerGame('extreme')}>
+                        <div className='card-content'>
+                            <h3>Extreme</h3>
+                            <span>Only for legends</span>
+                        </div>
+                    </button>
                 </div>
             </main>
         </div>
