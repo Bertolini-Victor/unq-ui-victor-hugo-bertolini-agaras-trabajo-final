@@ -6,17 +6,18 @@ import { useState, useEffect } from 'react';
 const Navbar = () => {
     const navigate = useNavigate();
 
+    const [isOpen, setIsOpen] = useState(false);
     const [easyScore, setEasyScore] = useState(() => {try { return Storage.getHighestScore('easy') || 0;} catch {return 0;}});
     const [normalScore, setNormalScore] = useState(() => {try {return Storage.getHighestScore('normal') || 0;} catch {return 0;}});
     const [hardScore, setHardScore] = useState(() => {try {return Storage.getHighestScore('hard') || 0;} catch {return 0;}});
-    const [expertScore, setExpertScore] = useState(() => {try {return Storage.getHighestScore('expert') || 0;} catch {return 0;}});
+    const [extremeScore, setExtremeScore] = useState(() => {try {return Storage.getHighestScore('extreme') || 0;} catch {return 0;}});
 
     useEffect(() => {
         const updateScores = () => {
             setEasyScore(Storage.getHighestScore('easy') || 0);
             setNormalScore(Storage.getHighestScore('normal') || 0);
             setHardScore(Storage.getHighestScore('hard') || 0);
-            setExpertScore(Storage.getHighestScore('expert') || 0);
+            setExtremeScore(Storage.getHighestScore('extreme') || 0);
         };
         window.addEventListener('scoreUpdated', updateScores);
         return () => {
@@ -31,25 +32,34 @@ const Navbar = () => {
     const handlerAbout = () => {
         navigate('/about');
     }
-
+    const toggleMenu = () => setIsOpen(!isOpen);
     return (
-        <nav className='navBar'>
-            <div className='logos'>
-                <img className= 'logoWilly' src="./web_menu_willy.png" alt="El logo de Willy" />
-                <img className= 'logoName' src="./web_menu_logo_en_dark.png" alt="El nombre de la pagina" />
+        <nav className={`navBar ${isOpen ? 'open' : ''}`}>
+            <div className='top-bar-mobile'>
+                <div className='logos' onClick={handlerHome}>
+                    <img className='logoWilly' src="/web_menu_willy.png" alt="Logo Willy" />
+                    <img className='logoName' src="/web_menu_logo_en_dark.png" alt="Logo Texto" />
+                </div>
+                <div className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
             </div>
-            <ul className='ulNav'>
-                <button onClick={handlerHome}>Home</button>
-                <button onClick={handlerAbout}>About</button>
-            </ul>
-            <div className='scoreBoard'>
-                <h3>Best Scores</h3>
-                <ul className='scoreList'>
-                    <li>Easy difficulty: {easyScore}</li>
-                    <li>Normal difficulty: {normalScore}</li>
-                    <li>Hard difficulty: {hardScore}</li>
-                    <li>Expert difficulty: {expertScore}</li>
+            <div className='nav-links-container'>
+                <ul className='ulNav'>
+                    <button onClick={handlerHome}>Home</button>
+                    <button onClick={handlerAbout}>About</button>
                 </ul>
+                <div className='scoreBoard'>
+                    <h3>Best Scores</h3>
+                    <div className='scoreList'>
+                        <div className='score-card'><span className='score-label'>Easy</span><span className='score-value easy'>{easyScore}</span></div>
+                        <div className='score-card'><span className='score-label'>Normal</span><span className='score-value normal'>{normalScore}</span></div>
+                        <div className='score-card'><span className='score-label'>Hard</span><span className='score-value hard'>{hardScore}</span></div>
+                        <div className='score-card'><span className='score-label'>Extreme</span><span className='score-value extreme'>{extremeScore}</span></div>
+                    </div>
+                </div>
             </div>
         </nav>
     );
