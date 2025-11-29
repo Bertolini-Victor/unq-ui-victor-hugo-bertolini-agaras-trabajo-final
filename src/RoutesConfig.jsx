@@ -12,3 +12,5 @@ const RoutesConfig = () => {
         </Routes>
     );
 }
+
+export default RoutesConfig;

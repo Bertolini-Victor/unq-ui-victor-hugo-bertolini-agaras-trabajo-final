@@ -1,9 +1,9 @@
 import './App.css'
-import Home from './pages/home/home.jsx'
+import RoutesConfig from './RoutesConfig.jsx'
 
 function App() {
   return (
-    <Home />
+    <RoutesConfig />
   )
 }
 
