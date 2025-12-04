@@ -132,11 +132,13 @@
 
         const getFeedback = () => {
             const percentage = (score / questions.length) * 100;
-            if (percentage === 100) return { text: "Perfect Score" };
-            if (percentage >= 80) return { text: "Excellent Performance" };
-            if (percentage >= 50) return { text: "Good Job" };
-            return { text: "Practice Makes Perfect" };
-        };
+            return [
+                () => percentage === 100 && 'Perfect Score',
+                () => percentage >= 80 && 'Excellent Performance',
+                () => percentage >= 50 && 'Good Job',
+                () => true && 'Practice makes perfect'
+            ].reduceRight((acc, fn) => fn() || acc, '')
+        }
 
         if (isGameOver) {
             const feedback = getFeedback();
@@ -146,7 +148,7 @@
                     <div className='gameContainer'>
                         <div className='resultCard'>
                             <h1 className='resultTitle'>Game Over</h1>
-                            <p className='resultMessage'>{feedback.text}</p>
+                            <p className='resultMessage'>{feedback}</p>
                             <div className='scoreCircle'>
                                 <span className='scoreBig'>{score}</span>
                                 <span className='scoreTotal'>/ {questions.length}</span>
