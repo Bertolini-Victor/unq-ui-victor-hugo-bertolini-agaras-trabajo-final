@@ -8,7 +8,7 @@ Este proyecto es un videojuego de preguntas y respuestas (SPA) desarrollado como
 
 El objetivo fue crear una experiencia de usuario fluida, responsive y moderna, consumiendo una API externa en tiempo real y gestionando estados complejos de juego.
 
-## 🔗 [Jugar Demo Online en Vercel](https://unq-ui-victor-hugo-bertolini-agaras.vercel.app/)
+## 🔗 [Jugar Demo Online en Vercel](https://trivia-crack.vercel.app/)
 
 ## 📸 Capturas de Pantalla
 
